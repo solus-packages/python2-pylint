@@ -11,13 +11,13 @@ description: |
 builddeps  :
     - mccabe
     - pytest-runner
-    - python-astroid
+    - python2-astroid
     - python-configparser
     - python-isort
     - python-setuptools
 rundeps    :
     - mccabe
-    - python-astroid
+    - python2-astroid
     - python-backports.functools_lru_cache
     - python-configparser
     - python-isort
