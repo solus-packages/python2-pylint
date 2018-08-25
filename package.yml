@@ -1,0 +1,36 @@
+name       : python2-pylint
+version    : 1.9.2
+release    : 1
+source     :
+    - https://github.com/PyCQA/pylint/archive/pylint-1.9.2.tar.gz : 01e3f87650b0d150b23bbd1338d012ff03d4251deb62f338908622fb0cf2e36c
+license    : GPL-2.0-only
+component  : programming.tools
+summary    : A Python source code analyzer which looks for programming errors, helps enforcing a coding standard and sniffs for some code smells
+description: |
+    A Python source code analyzer which looks for programming errors, helps enforcing a coding standard and sniffs for some code smells.
+builddeps  :
+    - mccabe
+    - pytest-runner
+    - python-astroid
+    - python-configparser
+    - python-isort
+    - python-setuptools
+rundeps    :
+    - mccabe
+    - python-astroid
+    - python-backports.functools_lru_cache
+    - python-configparser
+    - python-isort
+    - python-singledispatch
+    - python-six
+build      : |
+    %python_setup
+install    : |
+    %python_install
+    for _f in $installdir/usr/bin/*; do
+      mv -v $_f ${_f}2
+    done
+check      : |
+    pushd $PKG_BUILD_DIR/py2build
+        python setup.py pytest
+    popd
